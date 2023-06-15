@@ -116,7 +116,7 @@ class ChatBot:
 
         token_key = request.args.get('token')
         rendered = render_template('chat.html',
-                                   pandora_base=request.url_root.strip('/'),
+                                   # pandora_base=request.url_root.strip('/'),
                                    pandora_sentry=self.sentry,
                                    query=query
                                    )
