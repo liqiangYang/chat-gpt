@@ -1,5 +1,18 @@
 docker registry liqiangyang/chatgpt
 
+# docker 安装
+```shell
+yum -y install docker
+systemctl enable docker.service
+systemctl start docker.service
+docker login
+```
+
+# v2ray
+```shell
+docker run -d --name v2ray -v /data/app/conf/v2ray.json:/etc/v2ray/config.json -p 31560:31560 v2fly/v2fly-core run -c /etc/v2ray/config.json 
+```
+
 ```shell
 docker build --platform linux/amd64 -t chatgpt:0609-amd64 .
 ```
@@ -11,7 +24,7 @@ docker push liqiangyang/chatgpt:0609-amd64
 
 run
 ```shell
-docker run -d --name chatgpt --restart on-failure --network=host -e PANDORA_TOKENS_FILE=/data/app/www/chatgpt/access_token.json -e PANDORA_SERVER=0.0.0.0:8888 -v /data/app/www/chatgpt/access_token.json:/data/app/www/chatgpt/access_token.json liqiangyang/chatgpt:0615
+docker run -d --name chatgpt --restart on-failure --network=host -e PANDORA_TOKENS_FILE=/data/app/conf/gpt.json -e PANDORA_SERVER=0.0.0.0:8888 -v /data/app/conf/gpt.json:/data/app/conf/gpt.json liqiangyang/chatgpt:0615
 ```
 
 update restart
